@@ -7,6 +7,8 @@ class TextileData(data.Dataset):
     def __init__(self, root):
         imgs = os.listdir(root)
         self.imgs = [os.path.join(root, img) for img in imgs]
+        #self.imgs=self.imgs[:int(len(self.imgs)/4)]
+
 
     def __getitem__(self, item):
         img_path = self.imgs[item]

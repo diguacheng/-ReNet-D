@@ -1,3 +1,5 @@
+import os
+
 from dataset import TextileData
 import numpy as np
 
@@ -30,8 +32,8 @@ def patches_generation(opt, root='', patch_size=32, stride=4, mode='train'):
         W = opt.test_width
         H = opt.test_height
         C = opt.channel
-
-    raw_data = np.ones([N, C, H, W])
+    print([N, C, H, W])
+    raw_data = np.ones([N, C, H, W],dtype=np.float16)
 
     for index, item in enumerate(raw_dataset):
         raw_data[index] = item
@@ -48,7 +50,9 @@ def patches_generation(opt, root='', patch_size=32, stride=4, mode='train'):
     total_patches = w_scale * h_scale * N
     total_patches = int(total_patches)
 
-    patches = np.ones([total_patches, C, patch_size, patch_size])
+    print([total_patches, C, patch_size, patch_size])
+    patches = np.ones([total_patches, C, patch_size, patch_size], dtype=np.float16)
+    print(patches.shape)
     index = 0
 
     if mode == 'train':

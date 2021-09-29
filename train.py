@@ -54,7 +54,7 @@ def train(opt, initialize=True):
     for epoch in range(opt.max_epoch):
         if epoch % 300 == 0:
             #logger.scalar_summary(opt.model+'TLOSS', running_loss/(opt.patch_size ** 2 * len(trainDataset)), epoch)
-            print('epoch' + str(epoch) + ':  loss= %.8f' % (running_loss/(1 * len(trainDataset))))
+            print('epoch' + str(epoch) + ' loss= %.16f' % (running_loss/(1 * len(trainDataset))))
             net.save(opt.load_model_path + data_info + training_parameter + str(epoch) +'.pth')
 
         running_loss = 0.0
@@ -70,7 +70,7 @@ def train(opt, initialize=True):
             optimizer.step()
             running_loss += loss.item()
             if index == len(train_dataloader):
-                print('epoch' + str(epoch+1) + ' loss= %.8f' % (running_loss / (1 * len(trainDataset))))  # 一个epoch的损失
+                print('epoch' + str(epoch+1) + ' loss= %.16f' % (running_loss / (1 * len(trainDataset))))  # 一个epoch的损失
 
                 loss_val = running_loss / (1 * len(trainDataset))
                 if loss_val < loss_now_val:

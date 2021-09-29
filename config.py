@@ -20,7 +20,7 @@ class DefaultConfig(object):
     use_gpu = True
     train_batch_size = 512
     print_freq = 20
-    max_epoch = 4000
+    max_epoch = 200  # 4000
     lr = 0.0001
     lr_decay = 0.95
     weight_decay = 1e-5
